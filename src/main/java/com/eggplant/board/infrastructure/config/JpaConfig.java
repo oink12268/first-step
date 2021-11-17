@@ -16,7 +16,7 @@ public class JpaConfig {
     private EntityManager entityManager;
 
     @Bean
-    public JpaQueryFactory jpaQueryFactory() {
-        return new JpaQueryFactory(entityManager);
+    public JPAQueryFactory jpaQueryFactory() {
+        return new JPAQueryFactory(entityManager);
     }
 }
