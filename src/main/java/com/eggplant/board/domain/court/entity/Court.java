@@ -15,12 +15,16 @@ public class Court {
     /**
      * 코트명
      */
-    @Column(name = "name", nullable = false, length = 200)
+    @Column(nullable = false, length = 200)
     private String name;
 
     /**
      * 전화번호
      */
-    @Column(name = "phone", length = 200)
+    @Column(length = 200)
     private String phone;
+
+    private Double lat;
+
+    private Double lng;
 }

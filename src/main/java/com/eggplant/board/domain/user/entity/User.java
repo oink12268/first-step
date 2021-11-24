@@ -1,13 +1,18 @@
 package com.eggplant.board.domain.user.entity;
 
+import com.eggplant.board.domain.common.Common;
+import com.eggplant.board.domain.values.enumType.UserRole;
 import com.eggplant.board.presentation.dto.UserDto;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Getter
-public class User {
+public class User extends Common implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,14 +25,19 @@ public class User {
     private String userName;
 
     @Column( length = 50, nullable = false)
-    private String password;
+    private String pw;
+
+    @Setter
+    @Column(nullable = false, length = 50)
+    @Enumerated(EnumType.STRING)
+    private UserRole role;
 
     public User() {}
 
     public User(UserDto userDto) {
         this.email = userDto.getEmail();
         this.userName = userDto.getUserName();
-        this.password = userDto.getPassword();
+        this.pw = userDto.getPassword();
     }
 
     public static User createUser(UserDto userDto) {
