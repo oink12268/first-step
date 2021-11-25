@@ -12,8 +12,7 @@ public class Board {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "board_id")
-    private Long id;
+    private Long idx;
 
     @Column(length = 50, nullable = false)
     private String title;
@@ -24,7 +23,7 @@ public class Board {
     private LocalDateTime createdDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_idx")
     private User user;
 
 }

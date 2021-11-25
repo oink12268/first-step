@@ -3,7 +3,6 @@ package com.eggplant.board.domain.user.entity;
 import com.eggplant.board.domain.common.Common;
 import com.eggplant.board.domain.values.enumType.UserRole;
 import com.eggplant.board.presentation.dto.UserDto;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +11,8 @@ import java.io.Serializable;
 
 @Entity
 @Getter
-public class User extends Common implements Serializable {
+//public class User extends Common implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,11 @@ public class User extends Common implements Serializable {
     @Column(nullable = false, length = 50)
     @Enumerated(EnumType.STRING)
     private UserRole role;
+
+
+    @Setter
+    @Column(nullable = false, columnDefinition = "BOOLEAN DEFAULT true")
+    private Boolean isEnable = true;                        // 사용 여부
 
     public User() {}
 
